@@ -9,4 +9,12 @@ contract AbiDecode {
         string name;
         uint256[2] nums;
     }
+
+    function encode(uint256 x, address addr, uint256[] calldata arr, MyStruct calldata myStruct)
+        external
+        pure
+        returns (bytes memory)
+    {
+        return abi.encode(x, addr, arr, myStruct);
+    }
 }
