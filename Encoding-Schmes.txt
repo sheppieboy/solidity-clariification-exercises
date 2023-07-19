@@ -1,0 +1,16 @@
+There are a few different encoding schemes and this is a written clarification of when to use each one.
+
+1. abi.encode
+encodes its parameters using the ABI specs.  The ABI was designed to make calls to contracts. Parameters are padded to 32 bytes.
+If you are making calls to a contract you likely have to use abi.encode 
+
+2. abi.encodePacked
+encodes its parameters using the minimal space required by the type. Encoding an uint8 it will use 1 byte.
+This encoding scheme is used when you want to save some space - not call a contract
+
+3. abi.encodeWithSignature 
+same as encode but with the function signature as the first parameter.  Use when the signature is know and you don't want to 
+calculate the selector.
+
+4. abi.encodeWithSelector
+same as encode but selector is the first parameter. Nearly identical as encodeWithSignature - use whatever fits best
